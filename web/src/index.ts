@@ -6,6 +6,7 @@ import express from 'express';
 import morgan from 'morgan';
 import path from 'path';
 import { pagesRouter } from './routes/pages.routes';
+import { authRouter } from './routes/auth.routes';
 
 export const prismaDB = new PrismaClient({
   errorFormat: 'pretty',
@@ -27,6 +28,7 @@ app.use(express.json());
 
 // routes
 app.use('/', pagesRouter);
+app.use(authRouter);
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
