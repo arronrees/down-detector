@@ -1,0 +1,21 @@
+<% pageTitle='Home' %>
+
+  <%- include('./partials/head') %>
+
+    <%- include('./partials/header') %>
+
+      <main class="mt-24">
+
+        <h1 class="text-center text-lg font-bold mb-4">Check if a website is down</h1>
+
+        <form action="">
+          <div class="flex flex-col gap-4 items-center text-center max-w-xl mx-auto">
+            <input type="text" name="url" id="url" class="w-full rounded border border-gray-300 px-4 py-2"
+              placeholder="https://example.com">
+            <button type="submit" class="btn w-full">Check</button>
+          </div>
+        </form>
+
+      </main>
+
+      <%- include('./partials/footer') %>
