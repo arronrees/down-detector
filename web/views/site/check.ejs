@@ -8,18 +8,28 @@
 
         <h1 class="text-center text-lg md:text-2xl font-bold mb-4">Site Check</h1>
 
-        <div class="p-4 flex flex-col gap-4 <%= status ? 'bg-green-50' : 'bg-red-50' %>">
+        <div class="p-4 flex flex-col gap-4 <%= alive ? 'bg-green-50' : 'bg-red-50' %>">
           <div class="flex gap-4 justify-between">
             <div class="flex flex-col gap-2">
               <p class="text-lg font-semibold text-gray-600">
                 <%= url %>
               </p>
               <p class="">Site is currently <span class="underline">
-                  <%= status ? 'available' : 'unavailable' %>
+                  <%= alive ? 'available' : 'unavailable' %>
                 </span></p>
+              <div>
+                <% if(user) { %>
+                  <form action="/site/save" method="POST">
+                    <input type="hidden" name="url" value="<%= url %>">
+                    <button type="submit" class="underline">Save this check</button>
+                  </form>
+                  <% }else { %>
+                    <p class="underline">Sign in to save this check</p>
+                    <% } %>
+              </div>
             </div>
             <div class="flex flex-col gap-2 items-end">
-              <% if(status) { %>
+              <% if(alive) { %>
                 <a href="https://<%= url %>" target="_blank" rel="noreferrer noopener"
                   class="mt-auto font-semibold underline">View
                   Site</a>

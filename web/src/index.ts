@@ -10,6 +10,7 @@ import { PrismaSessionStore } from '@quixo3/prisma-session-store';
 import { pagesRouter } from './routes/pages.routes';
 import { authRouter } from './routes/auth.routes';
 import { siteRouter } from './routes/site.routes';
+import { userRouter } from './routes/user.routes';
 import { SessionUser } from './constant.types';
 import {
   __in_prod,
@@ -80,6 +81,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use('/', pagesRouter);
 app.use(authRouter);
 app.use(siteRouter);
+app.use(userRouter);
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
