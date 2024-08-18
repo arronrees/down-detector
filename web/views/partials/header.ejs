@@ -1,18 +1,38 @@
-<header class="flex justify-between items-center gap-4">
-  <a href="/" class="text-lg md:text-2xl">Down Detector</a>
-  <nav>
-    <ul class="flex items-center gap-4">
-      <% if (!user) { %>
-        <li>
-          <a href="/auth/login" class="btn">Login</a>
-        </li>
-        <% } else { %>
-          <li>
-            <form action="/auth/logout" method="POST">
-              <button type="submit" class="btn--red">Logout</button>
-            </form>
-          </li>
-          <% } %>
-    </ul>
-  </nav>
-</header>
+<% if(messages.error) { %>
+  <div class="absolute w-full p-4 top-0 left-0">
+    <div class="bg-red-200 p-4 shadow">
+      <p class="text-red-950">
+        <%= messages.error %>
+      </p>
+    </div>
+  </div>
+  <% } %>
+
+    <% if(messages.success) { %>
+      <div class="absolute w-full p-4 top-0 left-0">
+        <div class="bg-green-100 p-4 shadow">
+          <p class="text-green-950">
+            <%= messages.success %>
+          </p>
+        </div>
+      </div>
+      <% } %>
+
+        <header class="flex justify-between items-center gap-4">
+          <a href="/" class="text-lg md:text-2xl">Down Detector</a>
+          <nav>
+            <ul class="flex items-center gap-4">
+              <% if (!user) { %>
+                <li>
+                  <a href="/auth/login" class="btn">Login</a>
+                </li>
+                <% } else { %>
+                  <li>
+                    <form action="/auth/logout" method="POST">
+                      <button type="submit" class="btn--red">Logout</button>
+                    </form>
+                  </li>
+                  <% } %>
+            </ul>
+          </nav>
+        </header>

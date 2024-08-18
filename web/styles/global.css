@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 .page__wrapper {
-  @apply max-w-5xl mx-auto px-8 py-16;
+  @apply max-w-5xl mx-auto p-8;
 }
 
 .btn {
-  @apply block px-6 py-4 bg-gray-800 text-white rounded hover:bg-gray-700 focus:bg-gray-700 leading-tight;
+  @apply block px-6 py-4 bg-gray-800 text-white hover:bg-gray-700 focus:bg-gray-700 leading-tight;
 }
 
 .btn--red {
-  @apply block px-6 py-4 bg-red-800 text-white rounded hover:bg-red-700 focus:bg-red-700 leading-tight;
+  @apply block px-6 py-4 bg-red-800 text-white hover:bg-red-700 focus:bg-red-700 leading-tight;
 }

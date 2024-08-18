@@ -14,3 +14,5 @@ export const SITE_URL = process.env.SITE_URL as string;
 
 export const SESSION_KEY = process.env.SESSION_KEY as string;
 export const SESSION_SECRET = process.env.SESSION_SECRET as string;
+
+export const COOKIE_SECRET = process.env.COOKIE_SECRET as string;

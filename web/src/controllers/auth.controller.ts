@@ -38,9 +38,14 @@ export const postLoginUser = async (req: Request, res: Response) => {
       `,
     });
 
+    req.flash('success', 'Please check your email for a link to login.');
     return res.redirect('/auth/login');
   } catch (err) {
     console.error(err);
+    req.flash(
+      'error',
+      'There was an error sending you an email, please try again.'
+    );
     return res.redirect('/auth/login');
   }
 };

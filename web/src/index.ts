@@ -9,8 +9,16 @@ import expressSession from 'express-session';
 import { PrismaSessionStore } from '@quixo3/prisma-session-store';
 import { pagesRouter } from './routes/pages.routes';
 import { authRouter } from './routes/auth.routes';
+import { siteRouter } from './routes/site.routes';
 import { SessionUser } from './constant.types';
-import { __in_prod, SESSION_KEY, SESSION_SECRET } from './constants';
+import {
+  __in_prod,
+  COOKIE_SECRET,
+  SESSION_KEY,
+  SESSION_SECRET,
+} from './constants';
+import flash from 'express-flash';
+import cookieParser from 'cookie-parser';
 
 declare module 'express-session' {
   interface SessionData {
@@ -35,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser(COOKIE_SECRET));
 
 app.use(
   expressSession({
@@ -56,6 +65,7 @@ app.use(
     }),
   })
 );
+app.use(flash());
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.locals.user = null;
 
@@ -69,6 +79,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 // routes
 app.use('/', pagesRouter);
 app.use(authRouter);
+app.use(siteRouter);
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');

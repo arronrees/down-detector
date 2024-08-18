@@ -1,0 +1,29 @@
+<% pageTitle='Site Check' %>
+
+  <%- include('../partials/head') %>
+
+    <%- include('../partials/header') %>
+
+      <main class="mt-24">
+
+        <h1 class="text-center text-lg md:text-2xl font-bold mb-4">Site Check</h1>
+
+        <div class="p-4 flex flex-col gap-4 bg-gray-50">
+          <div class="flex gap-4 justify-between">
+            <div class="flex flex-col gap-2">
+              <p class="text-lg font-semibold text-gray-600">
+                <%= url %>
+              </p>
+              <p class="">Site is currently <span class="underline">available</span></p>
+            </div>
+            <div class="flex flex-col gap-2 items-end">
+              <span class="px-4 py-2 bg-green-200">200</span>
+              <a href="<%= url %>" target="_blank" rel="noreferrer noopener" class="font-semibold underline">View
+                Site</a>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <%- include('../partials/footer') %>
