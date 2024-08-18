@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { z } from 'zod';
+import ping from 'ping';
 
 export const getSiteCheckPage = async (req: Request, res: Response) => {
-  const { url } = req.query;
+  let { url } = req.query;
 
   if (!url || typeof url !== 'string') {
     return res.redirect('/');
@@ -14,7 +15,11 @@ export const getSiteCheckPage = async (req: Request, res: Response) => {
     return res.redirect('/');
   }
 
-  return res.render('site/check.ejs', { url });
+  url = url.replace('https://', '').replace('http://', '');
+
+  const pingResponse = await ping.promise.probe(url);
+
+  return res.render('site/check.ejs', { url, status: pingResponse.alive });
 };
 
 export const postCheckSiteDown = async (req: Request, res: Response) => {
