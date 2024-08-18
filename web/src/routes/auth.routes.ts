@@ -5,13 +5,14 @@ import {
   verifyMagicLink,
   postLogoutUser,
 } from '../controllers/auth.controller';
+import { authRequired, guestOnly } from '../middleware/auth.middleware';
 
 export const authRouter = Router();
 
-authRouter.get('/auth/login', getLoginPage);
+authRouter.get('/auth/login', guestOnly, getLoginPage);
 
-authRouter.get('/verify', verifyMagicLink);
+authRouter.get('/verify', guestOnly, verifyMagicLink);
 
-authRouter.post('/auth/login', postLoginUser);
+authRouter.post('/auth/login', guestOnly, postLoginUser);
 
-authRouter.post('/auth/logout', postLogoutUser);
+authRouter.post('/auth/logout', authRequired, postLogoutUser);
